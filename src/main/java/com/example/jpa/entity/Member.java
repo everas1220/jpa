@@ -5,9 +5,6 @@ import java.time.LocalDateTime;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import groovy.transform.Generated;
-import groovy.transform.ToString;
-import groovy.transform.builder.Builder;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EntityListeners;
@@ -17,23 +14,23 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
-//번호, user아이디, 이름, 나이, 역할, 가입일자, 자기소개
-//번호-자동증가
+// 번호,user아이디,이름,나이,역할,가입일자,자기소개
+
+// 번호-자동증가, 
 // user아이디-unique
-// 역할-ADMIN,USER
-//
-
+// 역할- ADMIN, USER
 @Getter
-@Setter
-@Builder
 @ToString
-@NoArgsConstructor
+@Setter
 @AllArgsConstructor
-
+@NoArgsConstructor
+@Builder
 @EntityListeners(value = AuditingEntityListener.class)
 @Entity
 public class Member {

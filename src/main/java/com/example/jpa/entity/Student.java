@@ -5,7 +5,6 @@ import java.time.LocalDateTime;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -19,7 +18,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -36,14 +34,17 @@ import lombok.ToString;
 @Builder
 @ToString
 
-@Table(name = "studenttbl") // 필수는 아님 하지만 이름을 붙히고싶으면 사용해야함
-@Entity // == db table과 연동
+@Table(name = "studenttbl")
+@Entity // == db table
 public class Student {
 
     @Id
     @SequenceGenerator(name = "student_seq_gen", sequenceName = "student_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "student_seq_gen")
-    private Long id; // id number(19,0) not null primary key(id)
+    // @GeneratedValue // create sequence studenttbl_seq start with 1 increment by
+    // 50
+    // @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id; // id number(19,0) not null primary key (id)
 
     // @Column(name = "sname", length = 100, nullable = false, unique = true)
     // @Column(name = "sname", columnDefinition = "varchar2(20) not null unique")
@@ -57,10 +58,10 @@ public class Student {
     @Column(nullable = false, length = 20)
     private Grade grade;
 
-    @Column(columnDefinition = "varchar2(1) CONSTRAINT CHK_GENDER CHECK (gender IN ('M','F'))")
+    @Column(columnDefinition = "varchar2(1) CONSTRAINT chk_gender CHECK (gender IN ('M','F'))")
     private String gender;
 
-    // Timestam(6)
+    // timestamp(6)
     @CreationTimestamp // insert
     private LocalDateTime cDateTime; // C_DATE_TIME
 
@@ -73,7 +74,7 @@ public class Student {
     private LocalDateTime uDateTime2;
 
     // enum 정의
-    // enum (상수 집합)
+    // enum(상수 집합)
     public enum Grade {
         FRESHMAN, SOPHOMORE, JUNIOR, SENIOR
     }

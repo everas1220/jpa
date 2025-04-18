@@ -21,10 +21,10 @@ import lombok.ToString;
 
 @Getter
 @Setter
-@Builder
-@ToString
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
+@ToString
 @EntityListeners(value = AuditingEntityListener.class)
 @Entity
 public class Board {

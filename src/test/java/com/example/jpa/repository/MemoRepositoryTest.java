@@ -8,7 +8,7 @@ import com.example.jpa.entity.Memo;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 @SpringBootTest
-public interface MemoRepositoryTest {
+public class MemoRepositoryTest {
 
     @Autowired
     private MemoRepository memoRepository;
@@ -17,7 +17,7 @@ public interface MemoRepositoryTest {
     @Test
     public void insertTest() {
         LongStream.range(1, 10).forEach(i -> {
-            Memo memo = Memo.builder().memoText("memoText"+i).build();
+            Memo memo = Memo.builder().memoText("memoText" + i).build();
             memoRepository.save(memo);
         });
     }
@@ -26,21 +26,21 @@ public interface MemoRepositoryTest {
     public void updateTest() {
         Memo memo = Memo.builder().mno(1L).memoText("memoText update").build();
         memoRepository.save(memo);
-        
+
     }
 
     @Test
-    public void readTest(){
-        
+    public void readTest() {
+
     }
 
     @Test
-    public void listTest(){
-        
+    public void listTest() {
+
     }
 
     @Test
-    public void deleteTest(){
-        
+    public void deleteTest() {
+
     }
 }

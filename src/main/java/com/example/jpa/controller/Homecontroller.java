@@ -8,7 +8,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Log4j2
 @Controller
-public class Homecontroller {
+public class HomeController {
+
     @GetMapping("/")
     public String getHome() {
         log.info("home 요청");
@@ -18,6 +19,7 @@ public class Homecontroller {
     @GetMapping("/main")
     public void getMain() {
         log.info("main 요청");
+
     }
 
 }

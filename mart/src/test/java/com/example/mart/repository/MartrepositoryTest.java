@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.example.mart.entity.CategoryItem;
 import com.example.mart.entity.Delivery;
 import com.example.mart.entity.Item;
 import com.example.mart.entity.Member;
@@ -196,5 +197,22 @@ public class MartrepositoryTest {
         // order를 지우면서 배송정보 삭제, 주문상품 제거
         orderRepository.deleteById(1L);
     }
+
+
+    Item item = Item.builder().name("Tv").price(25000000).stockQuantity(category1).build();
+    categoryItemRepository.save(item1);
+    
+    CategoryItem categoryItem = CategoryItem.builder().category(category1).item(item1).build();
+    categoryItemRepository.save(categoryItem);
+
+    iteam1 = item.builder().name("콩나물").price(1200).stockQuantity(5).build;
+    itemRepository.save(item);
+
+    categoryItem = CategoryItem.builder().Category(category2).item
+
+
+
+
+
 
 }
